@@ -3,9 +3,7 @@ import Pedidos from './pages/pedidos';
 import Home from './pages/home';
 
 function App() {
-  return (
-    <Home/>
-  );
+  return <Pedidos />;
 }
 
 export default App;
