@@ -1,16 +1,10 @@
 import './App.css';
-import Cards from './components/cards';
-import Sidebar from './components/sidebar';
-import Stats from './components/stats';
+import Pedidos from './pages/pedidos';
+import Home from './pages/home';
 
 function App() {
   return (
-    <div className="App">
-      <Sidebar>
-        <Cards/>
-        <Stats/>  
-      </Sidebar>
-    </div>
+    <Home/>
   );
 }
 
