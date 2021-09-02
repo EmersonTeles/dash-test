@@ -1,3 +1,5 @@
+/* eslint-disable indent */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 const pedidos = [
   {
     id: '#2245',
@@ -115,9 +117,9 @@ export default function OrdersList() {
                       <td className="px-6 py-4 text-center whitespace-nowrap">
                         <span
                           className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                            pedido.status == 'concluído'
+                            pedido.status === 'concluído'
                               ? 'bg-green-100 text-green-800'
-                              : pedido.status == 'em andamento'
+                              : pedido.status === 'em andamento'
                               ? 'bg-yellow-100 text-yellow-900'
                               : 'bg-red-100 text-red-900'
                           }`}
