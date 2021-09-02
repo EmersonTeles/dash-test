@@ -1,6 +1,6 @@
-import Sidebar from '../../components/sidebar';
-import Stats from '../../components/stats';
-import Cards from '../../components/cards';
+import Sidebar from "../../components/sidebar";
+import Stats from "../../components/stats";
+import Cards from "../../components/cards";
 
 export default function Home() {
   return (
