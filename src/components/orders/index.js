@@ -31,6 +31,7 @@ const pedidos = [
     image:
       "https://imgsapp2.correiobraziliense.com.br/app/noticia_127983242361/2019/08/24/778872/20190823195545417119i.JPG",
     status: "cancelado",
+
   },
 ];
 
@@ -120,6 +121,7 @@ export default function OrdersList() {
                               : pedido.status === "em andamento"
                               ? "bg-yellow-100 text-yellow-900"
                               : "bg-red-100 text-red-900"
+
                           }`}
                         >
                           {pedido.status}

@@ -6,6 +6,7 @@ import ClientsPage from "./pages/ClientsPage.js";
 import { useSection } from "./context/sectionContext";
 
 function App() {
+
   const { section } = useSection();
 
   const renderDashboard = (section) => {
