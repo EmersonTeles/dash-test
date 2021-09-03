@@ -5,7 +5,7 @@ export default function SearchInput() {
   return (
     <form className="search-form">
       <input
-        type="text"
+        type="search"
         className="search-input"
         placeholder="Digite o que procura.."
       />
