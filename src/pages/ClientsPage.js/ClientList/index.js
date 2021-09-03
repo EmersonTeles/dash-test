@@ -12,13 +12,7 @@ export default function ClientList() {
             {directory[letter].map((person) => (
               <li key={person.id} className="bg-white">
                 <div className="relative px-6 py-5 flex items-center space-x-3 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                  <div className="flex-shrink-0">
-                    <img
-                      className="h-10 w-10 rounded-full"
-                      src={person.imageUrl}
-                      alt=""
-                    />
-                  </div>
+                  <div className="flex-shrink-0"></div>
                   <div className="flex-1 min-w-0">
                     <a href="#" className="focus:outline-none">
                       {/* Extend touch target to entire panel */}

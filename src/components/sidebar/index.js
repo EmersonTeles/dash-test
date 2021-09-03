@@ -171,7 +171,6 @@ export default function Sidebar(props) {
                   <a
                     // LINKS
                     onClick={() => setSection(item.name)}
-                    style={{ background: "red" }}
                     key={item.name}
                     href={item.href}
                     className={classNames(
