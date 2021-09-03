@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../../components/sidebar";
 import { SectionProvider } from "../../context/sectionContext";
 import ClientList from "./ClientList";
+import SearchInput from "./ClientList/SearchInput";
+import AddClient from "./ClientList/AddClient";
 
 const ClientsPage = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <Sidebar>
       <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
@@ -19,19 +23,13 @@ const ClientsPage = () => {
                 Search projects
               </label>
               <div className="relative text-indigo-200 focus-within:text-gray-400">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"></div>
-                <input
-                  id="search"
-                  name="search"
-                  className="block w-full pl-10 pr-3 py-2 border border-transparent rounded-md leading-5 bg-indigo-400 bg-opacity-25 text-indigo-100 placeholder-indigo-200 focus:outline-none focus:bg-white focus:ring-0 focus:placeholder-gray-400 focus:text-gray-900 sm:text-sm"
-                  placeholder="Procurar Cliente"
-                  type="search"
-                />
+                <SearchInput />
               </div>
             </div>
           </div>
           <div className="ml-4 mt-2 flex-shrink-0">
             <button
+              onClick={() => setOpen(!open)}
               type="button"
               className="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
@@ -40,6 +38,7 @@ const ClientsPage = () => {
           </div>
         </div>
       </div>
+      <AddClient open={open} setOpen={setOpen} />
       <ClientList />
     </Sidebar>
   );
