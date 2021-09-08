@@ -1,12 +1,23 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
-import { Fragment } from 'react';
+import { useState, Fragment, useDebugValue } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
 import Input from '../Input';
-import Datalist from '../selectDatalist/index';
-import { clientList, storeList } from './data';
+import Datalist from '../datalist';
+import { clientList } from './data';
+import CreateItem from '../createItem';
+import ShoppingList from '../shoppingList';
 
 export default function CreateOrderSection({ OnClose, open, setOpen }) {
+  const itemsList = [];
+  const [items, setItems] = useState(itemsList);
+  function addItem(event, values) {
+    event.preventDefault();
+    event.stopPropagation();
+    setItems((arr) => [...arr, values]);
+  }
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -47,22 +58,13 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                         </div>
                       </div>
                     </div>
-                    <div className="flex border mt-6 relative flex-1 px-4 sm:px-6">
-                      <div
-                        className="h-full border-2 border-dashed border-gray-200"
-                        aria-hidden="true"
-                      >
-                        <form>
+                    <div className="flex gap-4 mt-6 relative flex-1 px-4 sm:px-6">
+                      <div className="h-full min-w-half" aria-hidden="true">
+                        <form autoComplete="true">
                           <Datalist
                             list={clientList}
                             label="Cliente"
                             name="cliente"
-                          />
-
-                          <Datalist
-                            list={storeList}
-                            label="Fornecedor"
-                            name="fornecedores"
                           />
                           <Input
                             type="text"
@@ -83,16 +85,17 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                           </section>
                         </form>
                       </div>
-                      <div
-                        className="h-full border-2 border-dashed border-gray-200"
-                        aria-hidden="true"
-                      >
-                        <h1>Orçamento:</h1>
+                      <div className="h-full min-w-half" aria-hidden="true">
+                        <h1 className="text-xl font-bold">Orçamento:</h1>
+                        <CreateItem
+                          addItem={(event, values) => addItem(event, values)}
+                        />
+                        <ShoppingList itemsList={items} />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="flex-shrink-0 px-4 py-4 flex justify-end">
+                <div className="flex-shrink-0 px-4 py-4 flex justify-end mb-8 absolute bottom-0">
                   <button
                     type="button"
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
