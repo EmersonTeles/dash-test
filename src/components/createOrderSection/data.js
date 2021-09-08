@@ -32,3 +32,14 @@ export const storeList = [
   'lorenzetti',
   'Bafran',
 ];
+export const itensList = [
+  'Argamassa',
+  'Tijolo',
+  'Cobogó',
+  'Tinta',
+  'Cimento',
+  'Luminaria',
+  'Lampada de led',
+  'Lampada Incandescente',
+  'Lampada Fluorescente',
+];
