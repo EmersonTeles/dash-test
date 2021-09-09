@@ -1,7 +1,6 @@
-import React from "react";
-import Sidebar from "../../components/sidebar";
-import { SectionProvider } from "../../context/sectionContext";
-import ClientList from "./ClientList";
+import React from 'react';
+import Sidebar from '../../components/sidebar';
+import ClientList from './ClientList';
 
 const ClientsPage = () => {
   return (

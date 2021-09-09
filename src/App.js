@@ -1,18 +1,19 @@
-import "./App.css";
-import Home from "./pages/home";
-import { Context } from "./context/sectionContext";
-import ClientsPage from "./pages/ClientsPage.js";
-import { useSection } from "./context/sectionContext";
+/* eslint-disable react/jsx-no-undef */
+/* eslint-disable no-shadow */
+import './App.css';
+import Home from './pages/home';
+import Pedidos from './pages/pedidos';
+import { useSection } from './context/sectionContext';
+import ClientsPage from './pages/ClientsPage.js';
 
 function App() {
-
   const { section } = useSection();
 
   const renderDashboard = (section) => {
-    if (section === "Pedidos") {
+    if (section === 'Pedidos') {
       return <Pedidos />;
     }
-    if (section === "Clientes") {
+    if (section === 'Clientes') {
       return <ClientsPage />;
     }
     return <Home />;

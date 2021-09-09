@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* This example requires Tailwind CSS v2.0+ */
 import { ArrowSmDownIcon, ArrowSmUpIcon } from '@heroicons/react/solid';
 import {
@@ -33,11 +34,11 @@ const stats = [
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function Stats() {
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(' ');
+  }
+
   return (
     <div>
       <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -94,7 +95,6 @@ export default function Stats() {
                     href="#"
                     className="font-medium text-indigo-600 hover:text-indigo-500"
                   >
-                    {' '}
                     Ver mais<span className="sr-only"> {item.name} stats</span>
                   </a>
                 </div>

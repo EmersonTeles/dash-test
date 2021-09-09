@@ -1,4 +1,6 @@
-import { directory } from "../clients";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-redundant-roles */
+import { directory } from '../clients';
 
 export default function ClientList() {
   return (
