@@ -7,7 +7,7 @@ const items = [
 
 export default function Example() {
   return (
-    <ul role="list" className="space-y-3">
+    <ul className="space-y-3">
       {items.map((item) => (
         <li
           key={item.id}
