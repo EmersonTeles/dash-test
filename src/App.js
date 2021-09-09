@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/home';
 import Pedidos from './pages/pedidos';
 import { useSection } from './context/sectionContext';
-import ClientsPage from './pages/ClientsPage.js';
+import ClientsPage from './pages/clientsPage';
 
 function App() {
   const { section } = useSection();
