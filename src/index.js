@@ -10,5 +10,6 @@ ReactDOM.render(
       <App />
     </SectionProvider>
   </React.StrictMode>,
+  
   document.getElementById("root")
 );
