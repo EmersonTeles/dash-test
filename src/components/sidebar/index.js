@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
@@ -15,20 +18,55 @@ import {
 import { useSection } from "../../context/sectionContext";
 
 const navigation = [
-  { name: "Visão geral", href: "#", icon: ViewGridIcon, current: true },
-  { name: "Pedidos", href: "#", icon: ShoppingCartIcon, current: false },
-  { name: "Clientes", href: "#", icon: UserGroupIcon, current: false },
-  { name: "Fornecedores", href: "#", icon: TruckIcon, current: false },
-  { name: "Produtos", href: "#", icon: ShoppingBagIcon, current: false },
-  { name: "Financeiro", href: "#", icon: CashIcon, current: false },
-  { name: "Configurações", href: "#", icon: CogIcon, current: false },
+  {
+    name: 'Visão geral',
+    href: '#',
+    icon: ViewGridIcon,
+    current: false,
+  },
+  {
+    name: 'Pedidos',
+    href: '#',
+    icon: ShoppingCartIcon,
+    current: true,
+  },
+  {
+    name: 'Clientes',
+    href: '#',
+    icon: UserGroupIcon,
+    current: false,
+  },
+  {
+    name: 'Fornecedores',
+    href: '#',
+    icon: TruckIcon,
+    current: false,
+  },
+  {
+    name: 'Produtos',
+    href: '#',
+    icon: ShoppingBagIcon,
+    current: false,
+  },
+  {
+    name: 'Financeiro',
+    href: '#',
+    icon: CashIcon,
+    current: false,
+  },
+  {
+    name: 'Configurações',
+    href: '#',
+    icon: CogIcon,
+    current: false,
+  },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 
 
-export default function Sidebar(props) {
+export default function Sidebar({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const { setSection } = useSection();
@@ -92,18 +130,19 @@ export default function Sidebar(props) {
                       href={item.href}
                       className={classNames(
                         item.current
-                          ? "bg-gray-100 text-gray-900"
-                          : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                        "group flex items-center px-2 py-2 text-base font-medium rounded-md"
+                          ? 'bg-gray-100 text-gray-900'
+                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                        'group flex items-center px-2 py-2 text-base font-medium rounded-md',
+
                       )}
                     >
                       <item.icon
                         className={classNames(
                           item.current
 
-                            ? "text-gray-500"
-                            : "text-gray-400 group-hover:text-gray-500",
-                          "mr-4 flex-shrink-0 h-6 w-6"
+                            ? 'text-gray-500'
+                            : 'text-gray-400 group-hover:text-gray-500',
+                          'mr-4 flex-shrink-0 h-6 w-6',
 
                         )}
                         aria-hidden="true"
@@ -180,19 +219,19 @@ export default function Sidebar(props) {
                     href={item.href}
                     className={classNames(
                       item.current
-
-                        ? "bg-gray-100 text-gray-900"
-                        : "text-gray-600 hover:bg-gray-50 hover:text-gray-900",
-                      "group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                        ? 'bg-gray-100 text-gray-900'
+                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
+                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
 
                     )}
                   >
                     <item.icon
                       className={classNames(
                         item.current
-                          ? "text-gray-500"
-                          : "text-gray-400 group-hover:text-gray-500",
-                        "mr-3 flex-shrink-0 h-6 w-6"
+
+                          ? 'text-gray-500'
+                          : 'text-gray-400 group-hover:text-gray-500',
+                        'mr-3 flex-shrink-0 h-6 w-6',
 
                       )}
                       aria-hidden="true"
@@ -217,7 +256,7 @@ export default function Sidebar(props) {
           </button>
         </div>
         <main className="flex-1 relative z-0 overflow-y-auto focus:outline-none">
-          {props.children}
+          {children}
         </main>
       </div>
     </div>

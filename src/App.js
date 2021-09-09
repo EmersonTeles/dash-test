@@ -1,5 +1,4 @@
 import "./App.css";
-import Pedidos from "./pages/pedidos";
 import Home from "./pages/home";
 import { Context } from "./context/sectionContext";
 import ClientsPage from "./pages/ClientsPage.js";

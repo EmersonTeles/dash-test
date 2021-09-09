@@ -1,0 +1,21 @@
+.new-order-button {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: fit-content;
+  background-color: rgb(19 177 14);
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  color: white;
+  margin-left: auto;
+}
+.plus-icon {
+  display: flex;
+  align-items: center;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: white;
+}
+.new-order-button:hover {
+  opacity: 0.7;
+}

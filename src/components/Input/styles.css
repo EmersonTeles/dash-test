@@ -1,0 +1,15 @@
+.input-container {
+  max-width: 100%;
+  min-width: 50%;
+  height: fit-content;
+}
+.input {
+  height: 2rem;
+  width: 100%;
+  padding: 0 1rem 0 1rem;
+  border-radius: 0.5rem;
+  border: 0;
+}
+.input:focus {
+  outline: 0;
+}

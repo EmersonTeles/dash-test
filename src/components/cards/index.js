@@ -1,9 +1,6 @@
+/* eslint-disable jsx-a11y/no-redundant-roles */
 /* This example requires Tailwind CSS v2.0+ */
-const items = [
-  { id: 1, title: "Relatório de vendas" },
-
-  // More items...
-];
+const items = [{ id: 1, title: 'Relatório de vendas' }];
 
 export default function Example() {
   return (

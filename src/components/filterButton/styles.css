@@ -1,0 +1,20 @@
+.filtro {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+  width: 5rem;
+  background-color: rgb(184, 119, 245);
+  border-radius: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  color: white;
+}
+.filtro-icon {
+  display: flex;
+  align-items: center;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: white;
+}
+.filtro:hover {
+  opacity: 0.5;
+}
