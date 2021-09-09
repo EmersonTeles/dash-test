@@ -8,7 +8,7 @@
   width: 100%;
   padding: 0 1rem 0 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.5), 0 1px 2px 0 #0000000f;
 }
 .input:focus {
   outline: 0;
