@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
@@ -8,15 +9,21 @@ import Input from '../Input';
 import Datalist from '../datalist';
 import { clientList } from './data';
 import CreateItem from '../createItem';
-import ShoppingList from '../shoppingList';
+import BudgetList from '../budgetList';
 
 export default function CreateOrderSection({ OnClose, open, setOpen }) {
   const itemsList = [];
   const [items, setItems] = useState(itemsList);
+
   function addItem(event, values) {
     event.preventDefault();
     event.stopPropagation();
     setItems((arr) => [...arr, values]);
+  }
+  function removeItem(index) {
+    const newItems = items;
+    newItems.splice(index, 1);
+    setItems(newItems);
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -40,7 +47,7 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
             >
               <div className="w-screen max-w-3xl">
                 <div className="h-full divide-y divide-gray-200 flex flex-col bg-white shadow-xl">
-                  <div className="min-h-0 flex-1 flex flex-col py-6 overflow-y-scroll">
+                  <div className="min-h-0 flex-1 flex flex-col py-6 overflow-x-hidden overflow-y-auto">
                     <div className="px-4 sm:px-6">
                       <div className="flex items-start justify-between">
                         <Dialog.Title className="text-lg font-medium text-gray-900">
@@ -90,7 +97,10 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                         <CreateItem
                           addItem={(event, values) => addItem(event, values)}
                         />
-                        <ShoppingList itemsList={items} />
+                        <BudgetList
+                          itemsList={items}
+                          removeItem={(index) => removeItem(index)}
+                        />
                       </div>
                     </div>
                   </div>
