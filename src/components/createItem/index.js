@@ -1,5 +1,4 @@
 /* eslint-disable react/jsx-no-bind */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import Input from '../Input';
@@ -24,11 +23,6 @@ export default function CreateItem({ addItem }) {
   function handleChange(event) {
     const { name, value } = event.target;
     setValue(name, value);
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log(values);
   }
 
   return (
