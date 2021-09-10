@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import { Link } from 'react-router-dom';
 import {
   ViewGridIcon,
   CashIcon,
@@ -20,43 +21,43 @@ export default function Sidebar({ children }) {
   const navigation = [
     {
       name: 'Visão geral',
-      href: '#',
+      href: '/',
       icon: ViewGridIcon,
-      current: false,
-    },
-    {
-      name: 'Pedidos',
-      href: '#',
-      icon: ShoppingCartIcon,
       current: true,
     },
     {
+      name: 'Pedidos',
+      href: '/pedidos',
+      icon: ShoppingCartIcon,
+      current: false,
+    },
+    {
       name: 'Clientes',
-      href: '#',
+      href: '/clientes',
       icon: UserGroupIcon,
       current: false,
     },
     {
       name: 'Fornecedores',
-      href: '#',
+      href: '/',
       icon: TruckIcon,
       current: false,
     },
     {
       name: 'Produtos',
-      href: '#',
+      href: '/',
       icon: ShoppingBagIcon,
       current: false,
     },
     {
       name: 'Financeiro',
-      href: '#',
+      href: '/',
       icon: CashIcon,
       current: false,
     },
     {
       name: 'Configurações',
-      href: '#',
+      href: '/',
       icon: CogIcon,
       current: false,
     },
@@ -122,9 +123,9 @@ export default function Sidebar({ children }) {
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
                 <nav className="mt-5 px-2 space-y-1">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.href}
                       className={classNames(
                         item.current
                           ? 'bg-gray-100 text-gray-900'
@@ -142,7 +143,7 @@ export default function Sidebar({ children }) {
                         aria-hidden="true"
                       />
                       {item.name}aa
-                    </a>
+                    </Link>
                   ))}
                 </nav>
               </div>
