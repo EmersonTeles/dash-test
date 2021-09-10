@@ -4,9 +4,10 @@ import { useState } from 'react';
 import CreateOrderButton from '../../components/createOrderButton';
 import CreateOrderSection from '../../components/createOrderSection';
 import FilterButton from '../../components/filterButton';
-import OrdersList from '../../components/orders';
+import Table from '../../components/table';
 import SearchInput from '../../components/searchInput';
 import Sidebar from '../../components/sidebar';
+import { pedidos, headTable } from './data';
 
 export default function Pedidos() {
   const [open, setOpen] = useState(false);
@@ -25,7 +26,7 @@ export default function Pedidos() {
           <FilterButton />
           <CreateOrderButton onClick={() => toggleModal()} />
         </div>
-        <OrdersList />
+        <Table headTable={headTable} headBody={pedidos} />
       </div>
       <CreateOrderSection
         OnClose={() => toggleModal()}
