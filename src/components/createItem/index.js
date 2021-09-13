@@ -6,13 +6,13 @@ import Datalist from '../datalist';
 import { itensList } from '../createOrderSection/data';
 
 export default function CreateItem({ addItem }) {
-  const defaultValues = {
+  const initialValues = {
     item: '',
     quantity: 1,
     price: 0.0,
   };
 
-  const [values, setValues] = useState(defaultValues);
+  const [values, setValues] = useState(initialValues);
 
   function setValue(chave, valor) {
     setValues({
@@ -26,11 +26,12 @@ export default function CreateItem({ addItem }) {
   }
 
   return (
-    <form onSubmit={(event) => addItem(event, values)}>
+    <form onSubmit={(event) => addItem(event, values, setValues)}>
       <Datalist
         list={itensList}
         label="Item"
         name="item"
+        value={values.item}
         onChange={handleChange}
       />
       <section className="flex">
@@ -38,9 +39,16 @@ export default function CreateItem({ addItem }) {
           type="number"
           label="Quantidade"
           name="quantity"
+          value={values.quantity}
           onChange={handleChange}
         />
-        <Input type="text" label="Preço" name="price" onChange={handleChange} />
+        <Input
+          type="text"
+          label="Preço"
+          name="price"
+          value={values.price}
+          onChange={handleChange}
+        />
       </section>
       <button className="bg-gray-200 px-5" type="submit" label="Adicionar">
         Adicionar
