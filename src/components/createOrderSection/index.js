@@ -1,13 +1,10 @@
-/* eslint-disable array-callback-return */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-alert */
 /* eslint-disable react/prop-types */
-import { useState, Fragment, useDebugValue } from 'react';
+import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
+import { clientList } from './data';
 import Input from '../Input';
 import Datalist from '../datalist';
-import { clientList } from './data';
 import CreateItem from '../createItem';
 import BudgetList from '../budgetList';
 
