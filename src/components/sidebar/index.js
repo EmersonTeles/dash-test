@@ -3,6 +3,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
+import { NavLink } from 'react-router-dom';
 import {
   ViewGridIcon,
   CashIcon,
@@ -14,57 +15,54 @@ import {
   XIcon,
   MenuIcon,
 } from '@heroicons/react/outline';
-import { useSection } from '../../context/sectionContext';
 
 export default function Sidebar({ children }) {
   const navigation = [
     {
       name: 'Visão geral',
-      href: '#',
+      href: '/',
       icon: ViewGridIcon,
-      current: false,
-    },
-    {
-      name: 'Pedidos',
-      href: '#',
-      icon: ShoppingCartIcon,
       current: true,
     },
     {
+      name: 'Pedidos',
+      href: '/pedidos',
+      icon: ShoppingCartIcon,
+      current: false,
+    },
+    {
       name: 'Clientes',
-      href: '#',
+      href: '/clientes',
       icon: UserGroupIcon,
       current: false,
     },
     {
       name: 'Fornecedores',
-      href: '#',
+      href: '/fornecedores',
       icon: TruckIcon,
       current: false,
     },
     {
       name: 'Produtos',
-      href: '#',
+      href: '/produtos',
       icon: ShoppingBagIcon,
       current: false,
     },
     {
       name: 'Financeiro',
-      href: '#',
+      href: '/financeiro',
       icon: CashIcon,
       current: false,
     },
     {
       name: 'Configurações',
-      href: '#',
+      href: '/configurações',
       icon: CogIcon,
       current: false,
     },
   ];
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const { setSection } = useSection();
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(' ');
@@ -122,15 +120,17 @@ export default function Sidebar({ children }) {
               <div className="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
                 <nav className="mt-5 px-2 space-y-1">
                   {navigation.map((item) => (
-                    <a
+                    <NavLink
                       key={item.name}
-                      href={item.href}
+                      exact
+                      to={item.href}
                       className={classNames(
                         item.current
                           ? 'bg-gray-100 text-gray-900'
                           : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
                         'group flex items-center px-2 py-2 text-base font-medium rounded-md',
                       )}
+                      activeClassName="bg-green-100 text-gray-900"
                     >
                       <item.icon
                         className={classNames(
@@ -141,8 +141,8 @@ export default function Sidebar({ children }) {
                         )}
                         aria-hidden="true"
                       />
-                      {item.name}aa
-                    </a>
+                      {item.name}
+                    </NavLink>
                   ))}
                 </nav>
               </div>
@@ -204,29 +204,19 @@ export default function Sidebar({ children }) {
             <div className="flex-1 flex flex-col pb-4 overflow-y-auto">
               <nav className="flex-1 px-2 bg-white space-y-1">
                 {navigation.map((item) => (
-                  <a
-                    // LINKS
-                    onClick={() => setSection(item.name)}
+                  <NavLink
                     key={item.name}
-                    href={item.href}
-                    className={classNames(
-                      item.current
-                        ? 'bg-gray-100 text-gray-900'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                      'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                    )}
+                    exact
+                    to={item.href}
+                    className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"
+                    activeClassName="bg-blue-100 text-blue-900"
                   >
                     <item.icon
-                      className={classNames(
-                        item.current
-                          ? 'text-gray-500'
-                          : 'text-gray-400 group-hover:text-gray-500',
-                        'mr-3 flex-shrink-0 h-6 w-6',
-                      )}
+                      className="text-gray-500 mr-3 flex-shrink-0 h-6 w-6"
                       aria-hidden="true"
                     />
                     {item.name}
-                  </a>
+                  </NavLink>
                 ))}
               </nav>
             </div>
