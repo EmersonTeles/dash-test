@@ -55,9 +55,6 @@ export default function Table({ headTable, headBody }) {
                         <div className="text-sm text-gray-900">
                           {pedido.title}
                         </div>
-                        <div className="text-sm text-gray-500">
-                          {pedido.department}
-                        </div>
                       </td>
                       <td className="px-6 py-4 text-center whitespace-nowrap">
                         <span
