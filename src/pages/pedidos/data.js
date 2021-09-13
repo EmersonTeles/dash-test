@@ -3,7 +3,6 @@ export const pedidos = [
     id: '#2245',
     cliente: 'Jânio Quadros',
     title: 'Regional Paradigm Technician',
-    department: 'Optimization',
     data: '24/08/2021',
     email: 'janio.quadros@planalto.gov',
     image:
@@ -14,7 +13,6 @@ export const pedidos = [
     id: '#2246',
     cliente: 'Getúlio Vargas',
     title: 'Ditador',
-    department: 'Optimization',
     data: '28/08/2021',
     email: 'getulio.vargas@planalto.gov',
     image:
@@ -25,7 +23,6 @@ export const pedidos = [
     id: '#2247',
     cliente: 'Juscelino Kubitschek',
     title: 'Presidente',
-    department: 'Optimization',
     data: '31/08/2021',
     email: 'juscelino.kubitschek@planalto.gov',
     image:
