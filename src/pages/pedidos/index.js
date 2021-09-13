@@ -11,8 +11,12 @@ import { pedidos, headTable } from './data';
 
 export default function Pedidos() {
   const [open, setOpen] = useState(false);
+  const [orders, setOrders] = useState(pedidos);
   function toggleModal() {
     setOpen(!open);
+  }
+  function handleSubmit(ordersValues) {
+    setOrders((arr) => [...arr, ordersValues]);
   }
   return (
     <Sidebar>
@@ -32,6 +36,7 @@ export default function Pedidos() {
         OnClose={() => toggleModal()}
         open={open}
         setOpen={setOpen}
+        handleSubmit={(ordersValues) => handleSubmit(ordersValues)}
       />
     </Sidebar>
   );

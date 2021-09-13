@@ -1,13 +1,8 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable object-curly-newline */
 /* eslint-disable react/prop-types */
 import './styles.css';
 
-export default function Input({ label, placeholder, name, type, onChange }) {
+function Input({ label, placeholder, name, type, value, onChange }) {
   const inputId = `id_${name}`;
-  if (placeholder === undefined) {
-    placeholder = '';
-  }
   return (
     <div className="input-container mb-5">
       <label htmlFor={inputId}>
@@ -17,6 +12,7 @@ export default function Input({ label, placeholder, name, type, onChange }) {
           placeholder={placeholder}
           type={type}
           name={name}
+          value={value}
           className="input shadow-md"
           onChange={onChange}
         />
@@ -24,3 +20,10 @@ export default function Input({ label, placeholder, name, type, onChange }) {
     </div>
   );
 }
+Input.defaultProps = {
+  type: 'text',
+  value: '',
+  placeholder: '',
+  onChance: () => {},
+};
+export default Input;
