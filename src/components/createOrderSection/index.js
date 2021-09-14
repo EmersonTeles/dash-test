@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
@@ -9,40 +10,30 @@ import CreateItem from '../createItem';
 import BudgetList from '../budgetList';
 
 export default function CreateOrderSection({ OnClose, open, setOpen }) {
-  const [items, setItems] = useState([]);
-  
-  const [values, setValues] = useState({
+  const defaultValues = {
     item: '',
     quantity: 1,
     price: 0.0,
-  });
-  
-  
+  };
+
+  const [items, setItems] = useState([]);
+
+  const [values, setValues] = useState(defaultValues);
+
   function onAddItem(event, product) {
-    console.log(product)
     event.preventDefault();
     event.stopPropagation();
     setItems((arr) => [...arr, product]);
   }
   function removeItem(product) {
-    console.log(product)
-    const productInCart = items.find((cartItem) => cartItem.item === product.item)
+    const productInCart = items.find(
+      (cartItem) => cartItem.item === product.item,
+    );
 
-    if(productInCart) {
+    if (productInCart) {
       setItems(items.filter((cartItem) => cartItem.item !== product.item));
     }
   }
-  
-
-
-  // function removeItem(item) {
-  //   console.log(item)
-  //   const productInCart = cartItems.find((cartItem) => cartItem.item === item.item)
-
-  //   if(productInCart) {
-  //     setCartItems(cartItems.filter((cartItem) => cartItem.item !== item.item));
-  //   }
-  // }
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog
@@ -113,13 +104,14 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                       <div className="h-full min-w-half" aria-hidden="true">
                         <h1 className="text-xl font-bold">Orçamento:</h1>
                         <CreateItem
-                        values={values}
-                        setValues={setValues}
+                          values={values}
+                          setValues={setValues}
+                          // prettier-ignore
                           onAddItem={(event, values) => onAddItem(event, values)}
-                          />
-                          <BudgetList
-                            itemsList={items}
-                            removeItem={(item) => removeItem(item)}
+                        />
+                        <BudgetList
+                          itemsList={items}
+                          removeItem={(item) => removeItem(item)}
                         />
                       </div>
                     </div>

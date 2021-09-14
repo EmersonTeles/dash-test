@@ -1,20 +1,10 @@
 /* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
 import Input from '../Input';
 import Datalist from '../datalist';
 import { itensList } from '../createOrderSection/data';
 
-export default function CreateItem({ onAddItem, values, setValues  }) {
-  // const defaultValues = {
-  //   item: '',
-  //   quantity: 1,
-  //   price: 0.0,
-  // };
-  
-  // const [values, setValues] = useState(defaultValues);
-
-
+export default function CreateItem({ onAddItem, values, setValues }) {
   function setValue(chave, valor) {
     setValues({
       ...values,

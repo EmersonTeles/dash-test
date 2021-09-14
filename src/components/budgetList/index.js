@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 export default function BudgetList({ itemsList, removeItem }) {
-
   return (
     <div className="flex flex-col mt-5">
       <div className="-my-2  sm:-mx-6 lg:-mx-8">
