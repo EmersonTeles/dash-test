@@ -22,6 +22,7 @@ export default function CreateItem({ onAddItem, values, setValues }) {
         list={itensList}
         label="Item"
         name="item"
+        value={values.item}
         onChange={handleChange}
       />
       <section className="flex">
@@ -29,9 +30,16 @@ export default function CreateItem({ onAddItem, values, setValues }) {
           type="number"
           label="Quantidade"
           name="quantity"
+          value={values.quantity}
           onChange={handleChange}
         />
-        <Input type="text" label="Preço" name="price" onChange={handleChange} />
+        <Input
+          type="text"
+          label="Preço"
+          name="price"
+          value={values.price}
+          onChange={handleChange}
+        />
       </section>
       <button className="bg-gray-200 px-5" type="submit" label="Adicionar">
         Adicionar
