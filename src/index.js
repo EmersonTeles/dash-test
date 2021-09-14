@@ -7,6 +7,7 @@ import Pedidos from './pages/pedidos';
 import ClientsPage from './pages/clientsPage';
 import ProductsPage from './pages/productsPage';
 import Login from './pages/login';
+import Fornecedores from './pages/fornecedores';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -16,6 +17,7 @@ ReactDOM.render(
       <Route path="/clientes" component={ClientsPage} />
       <Route path="/produtos" component={ProductsPage} />
       <Route path="/login" component={Login} />
+      <Route path="/fornecedores" component={Fornecedores} />
     </Switch>
   </BrowserRouter>,
 

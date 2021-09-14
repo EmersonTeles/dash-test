@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import { directory } from './data';
 
-export default function ProvidersList() {
+export default function ClientList() {
   return (
     <nav className="h-full overflow-y-auto" aria-label="Directory">
       {Object.keys(directory).map((letter) => (
