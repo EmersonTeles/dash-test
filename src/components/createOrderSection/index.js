@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-no-bind */
 import { useState, Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { XIcon } from '@heroicons/react/outline';
@@ -9,18 +10,54 @@ import CreateItem from '../createItem';
 import BudgetList from '../budgetList';
 
 export default function CreateOrderSection({ OnClose, open, setOpen }) {
-  const itemsList = [];
-  const [items, setItems] = useState(itemsList);
+  const defaultProductValues = {
+    item: '',
+    quantity: 1,
+    price: 0.0,
+  };
+  const defaultOrderValues = {
+    client: '',
+    adress: '',
+    startTime: '07:00',
+    endTime: '18:00',
+  };
+  const [items, setItems] = useState([]);
+  const [productValues, setProductValues] = useState(defaultProductValues);
+  const [ordersValues, setOrdersValues] = useState(defaultOrderValues);
 
-  function addItem(event, values) {
+  function onAddItem(event, product) {
     event.preventDefault();
     event.stopPropagation();
-    setItems((arr) => [...arr, values]);
+    setItems((arr) => [...arr, product]);
+    setProductValues(defaultProductValues);
   }
-  function removeItem(index) {
-    const newItems = items;
-    newItems.splice(index, 1);
-    setItems(newItems);
+
+  function removeItem(product) {
+    const productInCart = items.find(
+      (cartItem) => cartItem.item === product.item,
+    );
+
+    if (productInCart) {
+      setItems(items.filter((cartItem) => cartItem.item !== product.item));
+    }
+  }
+  function setValue(chave, valor) {
+    setOrdersValues({
+      ...ordersValues,
+      [chave]: valor,
+    });
+  }
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setValue(name, value);
+  }
+  function handleSubmit() {
+    OnClose();
+    setTimeout(() => {
+      setProductValues(defaultProductValues);
+      setOrdersValues(defaultOrderValues);
+      setItems([]);
+    }, 150);
   }
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -68,23 +105,31 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                           <Datalist
                             list={clientList}
                             label="Cliente"
-                            name="cliente"
+                            name="client"
+                            value={ordersValues.client}
+                            onChange={handleChange}
                           />
                           <Input
                             type="text"
                             label="Endereço da obra"
                             name="adress"
+                            value={ordersValues.adress}
+                            onChange={handleChange}
                           />
                           <section className="flex">
                             <Input
                               type="time"
                               label="Horario Inicial"
-                              name="start-time"
+                              name="startTime"
+                              value={ordersValues.startTime}
+                              onChange={handleChange}
                             />
                             <Input
                               type="time"
                               label="Horario Final"
-                              name="end-time"
+                              name="endTime"
+                              value={ordersValues.endTime}
+                              onChange={handleChange}
                             />
                           </section>
                         </form>
@@ -92,11 +137,14 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                       <div className="h-full min-w-half" aria-hidden="true">
                         <h1 className="text-xl font-bold">Orçamento:</h1>
                         <CreateItem
-                          addItem={(event, values) => addItem(event, values)}
+                          values={productValues}
+                          setValues={setProductValues}
+                          // prettier-ignore
+                          onAddItem={(event, values) => onAddItem(event, values)}
                         />
                         <BudgetList
                           itemsList={items}
-                          removeItem={(index) => removeItem(index)}
+                          removeItem={(item) => removeItem(item)}
                         />
                       </div>
                     </div>
@@ -106,16 +154,16 @@ export default function CreateOrderSection({ OnClose, open, setOpen }) {
                   <button
                     type="button"
                     className="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={OnClose}
+                    onClick={handleSubmit}
                   >
                     Cancel
                   </button>
                   <button
                     type="submit"
                     className="ml-4 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                    onClick={OnClose}
+                    onClick={handleSubmit}
                   >
-                    Save
+                    Adicionar Pedido
                   </button>
                 </div>
               </div>

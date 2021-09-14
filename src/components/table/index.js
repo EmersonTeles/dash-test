@@ -53,10 +53,7 @@ export default function Table({ headTable, headBody }) {
                       </td>
                       <td className="px-6 py-4 text-center whitespace-nowrap">
                         <div className="text-sm text-gray-900">
-                          {pedido.title}
-                        </div>
-                        <div className="text-sm text-gray-500">
-                          {pedido.department}
+                          {pedido.budgetList.store}
                         </div>
                       </td>
                       <td className="px-6 py-4 text-center whitespace-nowrap">
