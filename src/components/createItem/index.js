@@ -5,14 +5,15 @@ import Input from '../Input';
 import Datalist from '../datalist';
 import { itensList } from '../createOrderSection/data';
 
-export default function CreateItem({ addItem }) {
-  const defaultValues = {
-    item: '',
-    quantity: 1,
-    price: 0.0,
-  };
+export default function CreateItem({ onAddItem, values, setValues  }) {
+  // const defaultValues = {
+  //   item: '',
+  //   quantity: 1,
+  //   price: 0.0,
+  // };
+  
+  // const [values, setValues] = useState(defaultValues);
 
-  const [values, setValues] = useState(defaultValues);
 
   function setValue(chave, valor) {
     setValues({
@@ -26,7 +27,7 @@ export default function CreateItem({ addItem }) {
   }
 
   return (
-    <form onSubmit={(event) => addItem(event, values)}>
+    <form onSubmit={(event) => onAddItem(event, values)}>
       <Datalist
         list={itensList}
         label="Item"

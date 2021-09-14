@@ -1,8 +1,6 @@
 /* eslint-disable react/prop-types */
 export default function BudgetList({ itemsList, removeItem }) {
-  function deleteItem(index) {
-    removeItem(index);
-  }
+
   return (
     <div className="flex flex-col mt-5">
       <div className="-my-2  sm:-mx-6 lg:-mx-8">
@@ -53,7 +51,7 @@ export default function BudgetList({ itemsList, removeItem }) {
                       <td className="px-2 py-4 whitespace-wrap text-center text-sm font-medium">
                         <button
                           type="button"
-                          onClick={() => deleteItem(itemId)}
+                          onClick={() => removeItem(item)}
                           className="text-indigo-600 hover:text-indigo-900"
                         >
                           Delete
