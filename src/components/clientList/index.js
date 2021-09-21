@@ -17,7 +17,6 @@ export default function ProvidersList() {
                   <div className="flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <a href="#" className="focus:outline-none">
-                      {/* Extend touch target to entire panel */}
                       <span className="absolute inset-0" aria-hidden="true" />
                       <p className="text-sm font-medium text-gray-900">
                         {person.name}

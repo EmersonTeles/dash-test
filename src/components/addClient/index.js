@@ -46,33 +46,25 @@ export default function AddClient({ setOpen, open }) {
                       </div>
                     </div>
                     <div className="mt-6 relative flex-1 px-4 sm:px-6">
-                      {/* Replace with your content */}
                       <Input name="Nome" label="Nome" type="text" />
                       <p>Pessoa:</p>
                       <div className="flex items-center justify-between max-w-xs">
                         <div className="my-4">
-                          <input type="radio" name="fisica" />
+                          <input type="radio" name="pessoa" />
                           <label> Física</label>
                         </div>
                         <div>
-                          <input type="radio" name="juridica" />
+                          <input type="radio" name="pessoa" />
                           <label> Jurídica</label>
                         </div>
                       </div>
                       <Input name="Nome" label="CPF/CNPJ" type="text" />
-                      <Input name="Nome" label="Endereço da obra" type="text" />
                       <Input
                         name="Nome"
                         label="Telefone"
                         type="number"
                         placeholder="(XX)XXXXXXXX"
                       />
-                      <Input
-                        name="Nome"
-                        label="Horário de funcionamento da obra"
-                        type="text"
-                      />
-                      {/* /End replace */}
                     </div>
                   </div>
                   <div className="flex-shrink-0 px-4 py-4 flex justify-end">
