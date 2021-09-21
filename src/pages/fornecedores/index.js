@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Sidebar from '../../components/sidebar';
 import ClientList from '../../components/clientList';
 import SearchInput from '../../components/searchInput';
-import AddClient from '../../components/addClient';
+import AddStore from '../../components/addStore';
 
 export default function Fornecedores() {
   const [open, setOpen] = useState(false);
@@ -10,7 +10,7 @@ export default function Fornecedores() {
     <Sidebar>
       <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
         <div className="-ml-4 -mt-2 flex items-center justify-between flex-wrap sm:flex-nowrap">
-          <div className="ml-4 mt-2">
+          <div className="ml-4">
             <h3 className="text-lg leading-6 font-medium text-gray-900">
               Fornecedores
             </h3>
@@ -22,7 +22,7 @@ export default function Fornecedores() {
               </div>
             </div>
           </div>
-          <div className="ml-4 mt-2 flex-shrink-0">
+          <div className="ml-4 flex-shrink-0">
             <button
               onClick={() => setOpen(!open)}
               type="button"
@@ -33,7 +33,7 @@ export default function Fornecedores() {
           </div>
         </div>
       </div>
-      <AddClient open={open} setOpen={setOpen} />
+      <AddStore open={open} setOpen={setOpen} />
       <ClientList />
     </Sidebar>
   );
