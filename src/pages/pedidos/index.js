@@ -24,7 +24,7 @@ export default function Pedidos() {
         <div className="flex flex-wrap max-w-7xl mx-auto items-center mt-5 mb-5 px-4 sm:px-6 md:px-8 gap-4">
           <SearchInput />
           <FilterButton />
-          <CreateOrderButton onClick={() => toggleModal()} />
+          <CreateOrderButton title={"Novo Pedido"} onClick={() => toggleModal()} />
         </div>
         <Table headTable={headTable} headBody={pedidos} />
       </div>

@@ -7,7 +7,7 @@ export default function CreateOrderButton(props) {
   return (
     <button type="button" className="new-order-button" onClick={props.onClick}>
       <PlusIcon className="plus-icon" />
-      Novo Pedido
+      {props.title}
     </button>
   );
 }
