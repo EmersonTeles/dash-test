@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import api from '../../services/api';
 import materialLogo from '../../assets/materialagora-logo.svg';
 import './styles.css';
 
@@ -19,9 +20,14 @@ export default function Login() {
     const { name, value } = event.target;
     setValue(name, value);
   }
-  function handleSubmit() {
-    setValues(defaultValues);
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await api
+      .post('/auth/login', values)
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
   }
+
   return (
     <div className="login-container">
       <img src={materialLogo} alt="material agora logo" />
@@ -35,6 +41,7 @@ export default function Login() {
           type="email"
           name="email"
           placeholder="user@materialagora.com"
+          autoComplete="email"
           value={values.email}
           onChange={(event) => handleChange(event)}
         />
@@ -43,6 +50,7 @@ export default function Login() {
           type="password"
           name="password"
           placeholder="Senha"
+          autoComplete="current-password"
           value={values.password}
           onChange={(event) => handleChange(event)}
         />
