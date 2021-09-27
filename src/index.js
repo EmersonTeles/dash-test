@@ -8,18 +8,21 @@ import ClientsPage from './pages/clientsPage';
 import ProductsPage from './pages/productsPage';
 import Login from './pages/login';
 import Fornecedores from './pages/fornecedores';
+import { AuthContextProvider } from './context/authContext';
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Switch>
-      <Route path="/" component={Home} exact />
-      <Route path="/pedidos" component={Pedidos} />
-      <Route path="/clientes" component={ClientsPage} />
-      <Route path="/produtos" component={ProductsPage} />
-      <Route path="/login" component={Login} />
-      <Route path="/fornecedores" component={Fornecedores} />
-    </Switch>
-  </BrowserRouter>,
+  <AuthContextProvider>
+    <BrowserRouter>
+      <Switch>
+        <Route path="/login" component={Login} />
+        <Route path="/dashboard" component={Home} />
+        <Route path="/pedidos" component={Pedidos} />
+        <Route path="/clientes" component={ClientsPage} />
+        <Route path="/produtos" component={ProductsPage} />
+        <Route path="/fornecedores" component={Fornecedores} />
+      </Switch>
+    </BrowserRouter>
+  </AuthContextProvider>,
 
   document.getElementById('root'),
 );

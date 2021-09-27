@@ -1,9 +1,17 @@
-import { useState } from 'react';
-import api from '../../services/api';
+import { useContext, useState } from 'react';
+import { useHistory } from 'react-router';
+import { AuthContext } from '../../context/authContext';
 import materialLogo from '../../assets/materialagora-logo.svg';
 import './styles.css';
 
 export default function Login() {
+  const { authenticated, handleLogin } = useContext(AuthContext);
+  const history = useHistory();
+
+  if (authenticated) {
+    history.push('/dashboard');
+    return null;
+  }
   const defaultValues = {
     email: '',
     password: '',
@@ -22,10 +30,7 @@ export default function Login() {
   }
   async function handleSubmit(event) {
     event.preventDefault();
-    await api
-      .post('/auth/login', values)
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+    handleLogin(values);
   }
 
   return (
