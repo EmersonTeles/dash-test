@@ -20,53 +20,42 @@ export default function Sidebar({ children }) {
   const navigation = [
     {
       name: 'Visão geral',
-      href: '/',
+      href: '/dashboard',
       icon: ViewGridIcon,
-      current: true,
     },
     {
       name: 'Pedidos',
       href: '/pedidos',
       icon: ShoppingCartIcon,
-      current: false,
     },
     {
       name: 'Clientes',
       href: '/clientes',
       icon: UserGroupIcon,
-      current: false,
     },
     {
       name: 'Fornecedores',
       href: '/fornecedores',
       icon: TruckIcon,
-      current: false,
     },
     {
       name: 'Produtos',
       href: '/produtos',
       icon: ShoppingBagIcon,
-      current: false,
     },
     {
       name: 'Financeiro',
       href: '/financeiro',
       icon: CashIcon,
-      current: false,
     },
     {
       name: 'Configurações',
       href: '/configurações',
       icon: CogIcon,
-      current: false,
     },
   ];
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  function classNames(...classes) {
-    return classes.filter(Boolean).join(' ');
-  }
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -122,23 +111,13 @@ export default function Sidebar({ children }) {
                   {navigation.map((item) => (
                     <NavLink
                       key={item.name}
-                      exact
+                      strict
                       to={item.href}
-                      className={classNames(
-                        item.current
-                          ? 'bg-gray-100 text-gray-900'
-                          : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900',
-                        'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                      )}
+                      className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md"
                       activeClassName="bg-green-100 text-gray-900"
                     >
                       <item.icon
-                        className={classNames(
-                          item.current
-                            ? 'text-gray-500'
-                            : 'text-gray-400 group-hover:text-gray-500',
-                          'mr-4 flex-shrink-0 h-6 w-6',
-                        )}
+                        className="text-gray-400 group-hover:text-gray-500 mr-4 flex-shrink-0 h-6 w-6"
                         aria-hidden="true"
                       />
                       {item.name}
@@ -175,10 +154,8 @@ export default function Sidebar({ children }) {
         </Dialog>
       </Transition.Root>
 
-      {/* Static sidebar for desktop */}
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
-          {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
             <div className="pt-6 pb-6 flex-shrink-0 flex border-t border-gray-200 p-4">
               <a href="#" className="flex-shrink-0 w-full group block">
@@ -206,7 +183,7 @@ export default function Sidebar({ children }) {
                 {navigation.map((item) => (
                   <NavLink
                     key={item.name}
-                    exact
+                    strict
                     to={item.href}
                     className="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md"
                     activeClassName="bg-blue-100 text-blue-900"
