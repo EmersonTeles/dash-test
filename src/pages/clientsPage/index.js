@@ -1,12 +1,26 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Sidebar from '../../components/sidebar';
 import ClientList from '../../components/clientList';
 import SearchInput from '../../components/searchInput';
 import AddClient from '../../components/addClient';
+import api from '../../services/api';
 
 const ClientsPage = () => {
   const [open, setOpen] = useState(false);
+  const [clients, setClient] = useState([])
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const response = await api.get("/d4jbs12tfon251/public/orders")
+
+
+      setClient(response.data)
+    }
+
+    fetchOrders()
+
+  }, [])
 
   return (
     <Sidebar>
@@ -39,7 +53,7 @@ const ClientsPage = () => {
         </div>
       </div>
       <AddClient open={open} setOpen={setOpen} />
-      <ClientList />
+      <ClientList clients={clients} />
     </Sidebar>
   );
 };

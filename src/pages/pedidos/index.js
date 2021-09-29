@@ -1,6 +1,6 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import CreateOrderButton from '../../components/createOrderButton';
 import CreateOrderSection from '../../components/createOrderSection';
 import FilterButton from '../../components/filterButton';
@@ -8,12 +8,28 @@ import Table from '../../components/table';
 import SearchInput from '../../components/searchInput';
 import Sidebar from '../../components/sidebar';
 import { pedidos, headTable } from './data';
+import api from '../../services/api';
+import axios from 'axios';
 
 export default function Pedidos() {
+  const [orders, setOrders] = useState([])
   const [open, setOpen] = useState(false);
   function toggleModal() {
     setOpen(!open);
   }
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const response = await api.get("/d4jbs12tfon251/public/orders")
+
+
+      setOrders(response.data)
+    }
+
+    fetchOrders()
+
+  }, [])
+
   return (
     <Sidebar>
       <div className="py-6">
@@ -29,7 +45,7 @@ export default function Pedidos() {
             onClick={() => toggleModal()}
           />
         </div>
-        <Table headTable={headTable} headBody={pedidos} />
+        <Table headTable={headTable} headBody={orders} />
       </div>
       <CreateOrderSection
         OnClose={() => toggleModal()}

@@ -15,7 +15,10 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         <Route path="/login" component={Login} />
-        <Route path="/dashboard" component={Home} />
+
+        <Route path="/dashboard" component={Home}>
+
+        </Route>
         <Route path="/pedidos" component={Pedidos} />
         <Route path="/clientes" component={ClientsPage} />
         <Route path="/produtos" component={ProductsPage} />

@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, createContext } from 'react';
 import { useHistory } from 'react-router';
 import api from '../../services/api';
 
-export default function useAuth() {
+export default function Auth() {
   const [authenticated, setAuthenticated] = useState(false);
   const history = useHistory();
 
