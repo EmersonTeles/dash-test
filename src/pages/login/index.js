@@ -6,7 +6,6 @@ import './styles.css';
 
 export default function Login() {
   const { authenticated, handleLogin } = useContext(AuthContext);
-  // const [values, setValues] = useState(defaultValues);
   const history = useHistory();
 
   if (authenticated) {
@@ -17,20 +16,20 @@ export default function Login() {
     email: '',
     password: '',
   };
-
-  // function setValue(chave, valor) {
-  //   setValues({
-  //     ...values,
-  //     [chave]: valor,
-  //   });
-  // }
+  const [values, setValues] = useState(defaultValues);
+  function setValue(chave, valor) {
+    setValues({
+      ...values,
+      [chave]: valor,
+    });
+  }
   function handleChange(event) {
     const { name, value } = event.target;
-    // setValue(name, value);
+    setValue(name, value);
   }
   async function handleSubmit(event) {
     event.preventDefault();
-    // handleLogin(values);
+    handleLogin(values);
   }
 
   return (
