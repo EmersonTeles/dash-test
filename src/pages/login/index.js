@@ -8,10 +8,6 @@ export default function Login() {
   const { authenticated, handleLogin } = useContext(AuthContext);
   const history = useHistory();
 
-  if (authenticated) {
-    history.push('/dashboard');
-    return null;
-  }
   const defaultValues = {
     email: '',
     password: '',
@@ -31,7 +27,10 @@ export default function Login() {
     event.preventDefault();
     handleLogin(values);
   }
-
+  if (authenticated) {
+    history.push('/dashboard');
+    return null;
+  }
   return (
     <div className="login-container">
       <img src={materialLogo} alt="material agora logo" />
