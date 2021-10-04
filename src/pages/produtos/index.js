@@ -31,7 +31,7 @@ const products = [
   // More people...
 ];
 
-export default function Products() {
+export default function Produtos() {
   const [open, setOpen] = useState(false);
   function toggleModal() {
     setOpen(!open);

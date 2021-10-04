@@ -6,21 +6,14 @@ import SearchInput from '../../components/searchInput';
 import AddClient from '../../components/addClient';
 import api from '../../services/api';
 
-const ClientsPage = () => {
+export default function Clientes() {
   const [open, setOpen] = useState(false);
-  const [clients, setClient] = useState([])
+  const [clients, setClient] = useState([]);
 
-  useEffect(() => {
-    const fetchOrders = async () => {
-      const response = await api.get("/d4jbs12tfon251/public/orders")
-
-
-      setClient(response.data)
-    }
-
-    fetchOrders()
-
-  }, [])
+  useEffect(async () => {
+    const response = await api.get('/d4jbs12tfon251/public/orders');
+    setClient(response.data);
+  }, []);
 
   return (
     <Sidebar>
@@ -56,6 +49,4 @@ const ClientsPage = () => {
       <ClientList clients={clients} />
     </Sidebar>
   );
-};
-
-export default ClientsPage;
+}
