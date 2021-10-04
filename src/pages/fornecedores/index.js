@@ -1,11 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Sidebar from '../../components/sidebar';
 import ClientList from '../../components/clientList';
 import SearchInput from '../../components/searchInput';
 import AddStore from '../../components/addStore';
+import api from '../../services/api';
 
 export default function Fornecedores() {
   const [open, setOpen] = useState(false);
+  const [supllier, setSupplier] = useState([]);
+
+  useEffect(async () => {
+    const fetchOrders = async () => {
+      const response = await api.get(
+        '/d4jbs12tfon251/public/construction_sites',
+      );
+      setSupplier(response.data);
+    };
+    fetchOrders();
+  }, []);
+
   return (
     <Sidebar>
       <div className="bg-white px-4 py-5 border-b border-gray-200 sm:px-6">
@@ -34,7 +47,7 @@ export default function Fornecedores() {
         </div>
       </div>
       <AddStore open={open} setOpen={setOpen} />
-      <ClientList />
+      <ClientList clients={supllier} />
     </Sidebar>
   );
 }
