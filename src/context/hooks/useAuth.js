@@ -5,7 +5,7 @@ import api from '../../services/api';
 
 export default function Auth() {
   const [authenticated, setAuthenticated] = useState(false);
-  let tokenPayload = null;
+  let tokenPayload;
 
   async function handleLogin(values) {
     const {
@@ -19,7 +19,7 @@ export default function Auth() {
 
   function handleLogout() {
     setAuthenticated(false);
-    localStorage.removeItem('token');
+    localStorage.clear();
     api.defaults.headers.Authorization = undefined;
   }
 
@@ -31,20 +31,19 @@ export default function Auth() {
     }
     return authenticated;
   }
-
   useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    tokenPayload = jwt_decode(token);
-    let { exp } = tokenPayload;
-    exp = new Date(exp);
-    if (token && exp > new Date()) {
-      api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
-      setAuthenticated(true);
-    } else {
-      handleLogout();
+    if (localStorage.length > 0) {
+      const token = localStorage.getItem('token');
+      tokenPayload = jwt_decode(token);
+      let { exp } = tokenPayload;
+      exp = new Date(exp);
+      if (token && exp > new Date()) {
+        api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+        setAuthenticated(true);
+      } else {
+        handleLogout();
+      }
     }
   }, []);
-
   return { authenticated, getAuthenticated, handleLogin, handleLogout };
 }
