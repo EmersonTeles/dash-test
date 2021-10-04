@@ -11,8 +11,11 @@ export default function Clientes() {
   const [clients, setClient] = useState([]);
 
   useEffect(async () => {
-    const response = await api.get('/d4jbs12tfon251/public/orders');
-    setClient(response.data);
+    const fetchOrders = async () => {
+      const response = await api.get('/d4jbs12tfon251/public/orders');
+      setClient(response.data);
+    };
+    fetchOrders();
   }, []);
 
   return (

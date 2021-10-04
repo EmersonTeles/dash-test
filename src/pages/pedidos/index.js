@@ -7,12 +7,11 @@ import FilterButton from '../../components/filterButton';
 import Table from '../../components/table';
 import SearchInput from '../../components/searchInput';
 import Sidebar from '../../components/sidebar';
-import { pedidos, headTable } from './data';
+import { headTable } from './data';
 import api from '../../services/api';
-import axios from 'axios';
 
 export default function Pedidos() {
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState([]);
   const [open, setOpen] = useState(false);
   function toggleModal() {
     setOpen(!open);
@@ -20,15 +19,11 @@ export default function Pedidos() {
 
   useEffect(() => {
     const fetchOrders = async () => {
-      const response = await api.get("/d4jbs12tfon251/public/orders")
-
-
-      setOrders(response.data)
-    }
-
-    fetchOrders()
-
-  }, [])
+      const response = await api.get('/d4jbs12tfon251/public/orders');
+      setOrders(response.data);
+    };
+    fetchOrders();
+  }, []);
 
   return (
     <Sidebar>
