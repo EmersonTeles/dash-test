@@ -1,11 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-redundant-roles */
-import { directory } from './data';
 
 export default function ClientList({ clients }) {
   return (
     <nav className="h-full overflow-y-auto" aria-label="Directory">
-
       <ul role="list" className="relative z-0 divide-y divide-gray-200">
         {clients.map((person) => (
           <li key={person.id} className="bg-white">
