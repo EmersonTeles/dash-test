@@ -14,7 +14,10 @@ import {
   UserGroupIcon,
   XIcon,
   MenuIcon,
+  LogoutIcon,
 } from '@heroicons/react/outline';
+import { useContext } from 'react/cjs/react.development';
+import { AuthContext } from '../../context/authContext';
 
 export default function Sidebar({ children }) {
   const navigation = [
@@ -56,6 +59,7 @@ export default function Sidebar({ children }) {
   ];
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const { handleLogout } = useContext(AuthContext);
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
       <Transition.Root show={sidebarOpen} as={Fragment}>
@@ -125,9 +129,9 @@ export default function Sidebar({ children }) {
                   ))}
                 </nav>
               </div>
-              <div className="flex-shrink-0 flex border-t border-gray-200 p-4">
+              <div className="flex-shrink-0 flex border-t border-gray-200 p-4  justify-between">
                 <a href="#" className="flex-shrink-0 group block">
-                  <div className="flex items-center">
+                  <div className="flex">
                     <div>
                       <img
                         className="inline-block h-10 w-10 rounded-full"
@@ -145,6 +149,11 @@ export default function Sidebar({ children }) {
                     </div>
                   </div>
                 </a>
+                <LogoutIcon
+                  className="h-6 w-6 text-black"
+                  aria-hidden="true"
+                  onClick={handleLogout}
+                />
               </div>
             </div>
           </Transition.Child>
@@ -157,9 +166,9 @@ export default function Sidebar({ children }) {
       <div className="hidden md:flex md:flex-shrink-0">
         <div className="flex flex-col w-64">
           <div className="flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white">
-            <div className="pt-6 pb-6 flex-shrink-0 flex border-t border-gray-200 p-4">
-              <a href="#" className="flex-shrink-0 w-full group block">
-                <div className="flex items-center">
+            <div className="pt-6 pb-6 flex border-t border-gray-200 p-4 items-center">
+              <a href="#" className=" w-full group block">
+                <div className="flex">
                   <div>
                     <img
                       className="inline-block h-9 w-9 rounded-full"
@@ -177,6 +186,12 @@ export default function Sidebar({ children }) {
                   </div>
                 </div>
               </a>
+              <button type="button" onClick={handleLogout}>
+                <LogoutIcon
+                  className="h-6 w-6 text-gray-500 hover:text-gray-900"
+                  aria-hidden="true"
+                />
+              </button>
             </div>
             <div className="flex-1 flex flex-col pb-4 overflow-y-auto">
               <nav className="flex-1 px-2 bg-white space-y-1">
