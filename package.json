@@ -2,7 +2,7 @@
   "name": "dashboard",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://ma-private-api.herokuapp.com",
+  "proxy": "https:/api.materialagora.com.br",
   "dependencies": {
     "@craco/craco": "^6.2.0",
     "@headlessui/react": "^1.4.1",
