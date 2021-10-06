@@ -2,7 +2,7 @@
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable react/jsx-props-no-spreading */
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { useContext } from 'react/cjs/react.development';
 import Home from './pages/home';
 import Pedidos from './pages/pedidos';
@@ -25,7 +25,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 };
 export default function Routes() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Switch>
         <Route exact path="/">
           <Redirect to="/login" />
@@ -37,6 +37,6 @@ export default function Routes() {
         <PrivateRoute path="/produtos" component={Produtos} />
         <PrivateRoute path="/fornecedores" component={Fornecedores} />
       </Switch>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
