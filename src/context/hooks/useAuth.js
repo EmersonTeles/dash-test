@@ -5,14 +5,14 @@ import api from '../../services/api';
 
 export default function Auth() {
   const [authenticated, setAuthenticated] = useState(false);
-  let tokenPayload;
 
   async function handleLogin(values) {
     const {
       data: { token },
     } = await api.post('/auth/login', values);
-
+    const { exp } = jwt_decode(token);
     localStorage.setItem('token', JSON.stringify(token));
+    localStorage.setItem('exp', JSON.stringify(exp));
     api.defaults.headers.Authorization = `Bearer ${token}`;
     setAuthenticated(true);
   }
@@ -22,22 +22,12 @@ export default function Auth() {
     localStorage.clear();
     api.defaults.headers.Authorization = undefined;
   }
-
-  function getAuthenticated() {
-    let { exp } = tokenPayload;
-    exp = new Date(exp);
-    if (exp > new Date()) {
-      handleLogout();
-    }
-    return authenticated;
-  }
   useEffect(() => {
     if (localStorage.length > 0) {
       const token = localStorage.getItem('token');
-      tokenPayload = jwt_decode(token);
-      let { exp } = tokenPayload;
+      let exp = JSON.parse(localStorage.getItem('exp'));
       exp = new Date(exp);
-      if (token && exp > new Date()) {
+      if (token && new Date() < exp) {
         api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
         setAuthenticated(true);
       } else {
@@ -45,5 +35,5 @@ export default function Auth() {
       }
     }
   }, []);
-  return { authenticated, getAuthenticated, handleLogin, handleLogout };
+  return { authenticated, handleLogin, handleLogout };
 }
