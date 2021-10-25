@@ -31,11 +31,11 @@ export default function Routes() {
           <Redirect to="/login" />
         </Route>
         <Route path="/login" component={Login} />
-        <PrivateRoute path="/dashboard" component={Home} />
-        <PrivateRoute path="/pedidos" component={Pedidos} />
-        <PrivateRoute path="/clientes" component={Clientes} />
-        <PrivateRoute path="/produtos" component={Produtos} />
-        <PrivateRoute path="/fornecedores" component={Fornecedores} />
+        <Route path="/dashboard" component={Home} />
+        <Route path="/pedidos" component={Pedidos} />
+        <Route path="/clientes" component={Clientes} />
+        <Route path="/produtos" component={Produtos} />
+        <Route path="/fornecedores" component={Fornecedores} />
       </Switch>
     </HashRouter>
   );
